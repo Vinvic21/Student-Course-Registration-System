@@ -4,6 +4,7 @@ class Course:
         self.course_name = course_name
         self.trainer_name = trainer_name
         self.capacity = capacity
+        self. enrolled = 0
     
     @property
     def course_ID(self):
@@ -41,4 +42,8 @@ class Course:
         if not value:
             raise ValueError("Capacity cannot be empty")
         self._capacity = value
+    def add_student(self):
+        if self.enrolled >= self.capacity:
+            raise ValueError(" Course is full.")
+        self.enrolled += 1
 
