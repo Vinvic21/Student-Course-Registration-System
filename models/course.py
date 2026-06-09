@@ -8,7 +8,7 @@ class Course:
     
     @property
     def course_ID(self):
-        self._course_ID
+        return self._course_ID
     @course_ID.setter
     def course_ID(self, value):
         if not value:
@@ -17,7 +17,7 @@ class Course:
     
     @property
     def course_name(self):
-        self._course_name
+        return self._course_name
     @course_name.setter
     def course_name(self, value):
         if not value:
@@ -26,7 +26,7 @@ class Course:
 
     @property
     def trainer_name(self):
-        self._trainer
+        return self._trainer_name
     @trainer_name.setter
     def trainer_name(self, value):
         if not value:
@@ -36,7 +36,7 @@ class Course:
 
     @property
     def capacity(self):
-        self._capacity
+        return self._capacity
     @capacity.setter
     def capacity(self, value):
         if not value:

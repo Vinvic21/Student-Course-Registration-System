@@ -7,12 +7,15 @@ class Student(Person):
        
     @property
     def student_ID(self):
-        self._student_ID 
+        return self._student_ID 
     @student_ID.setter
-    def name(self, value):
+    def student_ID(self, value):
+        value = value.strip()
         if not value:
             raise ValueError("student ID cannot be empty")
-        self._name = value
+        if not value.isdigit():
+            raise ValueError("student ID must contain only digits.")
+        self._student_ID = value
    
 
     

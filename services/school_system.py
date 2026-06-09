@@ -10,7 +10,11 @@ def open_file(filename):
     if not os.path.exists(path):
         return []
     with open(path, "r") as file:
-        return json.load(file)
+        try:
+
+            return json.load(file)
+        except:
+            return []
 
 def write_file(filename, data):
     path = os.path.join(DATA_FILES, filename)
@@ -27,11 +31,13 @@ class SchoolSystem:
         for student in self.students:
             if student["student_ID"] == student_ID:
                 raise ValueError("Student already exist")
+        #runs validation from the child student and parent  Person class
+        studentObj = Student(student_ID, name, email, phone_number)
         new_student = {
-            "student_ID": student_ID,
-            "name": name,
-            "email": email,
-            "phone_number": phone_number
+            "student_ID": studentObj.student_ID,
+            "name": studentObj.name,
+            "email": studentObj.email,
+            "phone_number": studentObj.phone_number
         }
         self.students.append(new_student)
         print(f"{new_student['name']} added to the list")
@@ -40,11 +46,13 @@ class SchoolSystem:
         for course in self.courses:
             if course["course_ID"] == course_ID:
                 raise ValueError("Course already exist")
+        #runs validation from class Courseee
+        courseObj = Course(course_ID, course_name, trainer_name, capacity)
         new_course = {
-            "course_ID": course_ID,
-            "course_name": course_name,
-            "trainer_name": trainer_name,
-            "capacity": capacity,
+            "course_ID": courseObj.course_ID,
+            "course_name": courseObj.course_name,
+            "trainer_name": courseObj.trainer_name,
+            "capacity": courseObj.capacity,
             "enrolled": 0
         }
         self.courses.append(new_course)
@@ -82,4 +90,4 @@ class SchoolSystem:
         else:
             print("List of Students:")
             for student in self.students:
-                print(f" - {student['student_ID']}: {student['name']} ({student['email']}, {student['phone_number']})")
+                print(f" {student['student_ID']}: {student['name']} ({student['email']}, {student['phone_number']})")

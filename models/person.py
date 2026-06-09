@@ -6,7 +6,7 @@ class Person:
         self.phone_number = phone_number
     @property
     def name(self):
-        self._name 
+        return self._name 
     @name.setter
     def name(self, value):
         if not value:
@@ -14,7 +14,7 @@ class Person:
         self._name = value
     @property
     def email(self):
-        self._email
+        return self._email
     @email.setter
     def email(self, value):
         if "@" not in value:
